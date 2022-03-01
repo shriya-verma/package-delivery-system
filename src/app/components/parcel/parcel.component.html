@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="offset-3 col-6 border shadow-sm p-4">
+    <h3 class="mb-4">Parcel Info</h3>
+    <form [formGroup]="parcelForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="type" class="form-label">Type of Parcel</label>
+        <select class="form-select" name="type" formControlName="type">
+          <option value="Same Day">Same Day</option>
+          <option value="Overnight">Overnight</option>
+          <option value="Parcel Service">Parcel Service</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="weight" class="form-label">Weight (in kgs)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="weight"
+          name="weight"
+          formControlName="weight"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="length" class="form-label">Length (in meter)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="length"
+          name="length"
+          formControlName="length"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="breadth" class="form-label">Breadth (in meter)</label>
+        <input
+          type="number"
+          class="form-control"
+          id="breadth"
+          name="breadth"
+          formControlName="breadth"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="pickupAddress" class="form-label">Pickup Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pickupAddress"
+          name="pickupAddress"
+          formControlName="pickupAddress"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="dropAddress" class="form-label">Drop Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dropAddress"
+          name="dropAddress"
+          formControlName="dropAddress"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="additionalPhoneNumber" class="form-label"
+          >Additional Phone Address</label
+        >
+        <input
+          type="tel"
+          class="form-control"
+          id="additionalPhoneNumber"
+          name="additionalPhoneNumber"
+          formControlName="additionalPhoneNumber"
+        />
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-success w-100 mb-2"
+        (click)="getCost()"
+        *ngIf="!costReceived"
+      >
+        Get Cost
+      </button>
+
+      <div class="row" *ngIf="costReceived && paymentAmount > 0">
+        <div class="col-8">
+          <p>Amount</p>
+          <p>Discount</p>
+          <hr class="text-muted" />
+          <p>Final Amount</p>
+        </div>
+        <div class="col-4 text-end">
+          <p>₹ {{ paymentAmount }}</p>
+          <p>₹ {{ discount }}</p>
+          <hr class="text-muted" />
+          <p>₹ {{ paymentAmount - discount }}</p>
+        </div>
+      </div>
+
+      <label for="coupon" class="form-label" *ngIf="costReceived">Coupon</label>
+      <div class="row mb-3" *ngIf="costReceived">
+        <div class="col-8">
+          <input
+            type="text"
+            class="form-control"
+            id="coupon"
+            name="coupon"
+            formControlName="coupon"
+          />
+        </div>
+        <div class="col-4">
+          <button
+            type="button"
+            class="btn btn-success w-100"
+            (click)="verifyCoupon()"
+          >
+            Apply Coupon
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mb-2">Book</button>
+    </form>
+  </div>
+</div>
