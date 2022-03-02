@@ -7,6 +7,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { ParcelComponent } from './components/parcel/parcel.component';
 
 const routes: Routes = [
+  {
+    path: "", 
+    redirectTo: "login",
+    pathMatch: "full"
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'parcel', component: ParcelComponent },
