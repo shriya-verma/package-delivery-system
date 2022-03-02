@@ -13,7 +13,7 @@ function sendOTP(phoneNumber) {
       })
       .catch((err) => {
         console.log(err);
-        resolve(err);
+        reject(err);
       });
   });
 }
@@ -29,7 +29,7 @@ function verifyOTP(phoneNumber, otp) {
       })
       .catch((err) => {
         console.log(err);
-        resolve(err);
+        reject(err);
       });
   });
 }

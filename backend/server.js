@@ -21,7 +21,7 @@ app.all("/*", function (req, res, next) {
 }); //handling cors issue
 
 // Routes   
-app.use("/users", require("./routes/userRoutes")); //-- endpoints of API
+app.use("/users", require("./routes/userRoutes")); 
 app.use("/parcel", require("./routes/parcelRoutes"));
 
 app.get("/", (req, res) => {

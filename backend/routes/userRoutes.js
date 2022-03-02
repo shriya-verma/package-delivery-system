@@ -7,18 +7,18 @@ const twilioService = require("../services/twilioService");
 router.post("/authenticate", authenticate);
 router.post("/register", register);
 
-function authenticate(req, res, next) {
+function authenticate(req, res) {
   userService
     .authenticate(req.body)
     .then((user) => res.json(user))
-    .catch(next);
+    .catch((err) => console.error(err));
 }
 
-function register(req, res, next) {
+function register(req, res) {
   userService
     .create(req.body)
     .then(() => res.json({ message: "Registration successful" }))
-    .catch(next);
+    .catch((err) => console.error(err));
 }
 
 // twilio
