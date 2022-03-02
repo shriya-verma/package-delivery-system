@@ -23,7 +23,7 @@ export class UserService {
 
   // verify login credentials
   login(userData: { email: string; password: string }): Observable<any> {
-    return this.http.post('http://localhost:8000/users/register', {
+    return this.http.post('http://localhost:8000/users/authenticate', {
       email: userData.email,
       password: userData.password,
     });

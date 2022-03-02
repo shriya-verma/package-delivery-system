@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+
 // const db = require("./config/db");
 const PORT = process.env.PORT || 8000;
 
@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8000;
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json());// allows to handle raw json 
 app.use(express.urlencoded({ extended: false }));
 
 app.all("/*", function (req, res, next) {
@@ -18,10 +18,10 @@ app.all("/*", function (req, res, next) {
     "Content-Type, Authorization, Content-Length, X-Requested-With"
   );
   next();
-});
+}); //handling cors issue
 
-// Routes
-app.use("/users", require("./routes/userRoutes"));
+// Routes   
+app.use("/users", require("./routes/userRoutes")); //-- endpoints of API
 app.use("/parcel", require("./routes/parcelRoutes"));
 
 app.get("/", (req, res) => {

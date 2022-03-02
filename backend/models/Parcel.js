@@ -8,13 +8,13 @@ function model(sequelize) {
     breadth: { type: DataTypes.STRING, allowNull: false },
     pickupAddress: { type: DataTypes.STRING, allowNull: false },
     dropAddress: { type: DataTypes.STRING, allowNull: false },
-    additionalPhoneSTRING: { type: DataTypes.STRING, allowNull: false },
+    additionalPhoneNumber: { type: DataTypes.STRING, allowNull: false },
     coupon: { type: DataTypes.STRING, allowNull: false },
     discount: { type: DataTypes.STRING, allowNull: false },
     paymentAmount: { type: DataTypes.STRING, allowNull: false },
   };
 
-  return sequelize.define("Parcel", attributes);
+  return sequelize.define("Parcel", attributes); //model definition
 }
 
 module.exports = model;
