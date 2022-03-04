@@ -59,6 +59,14 @@ export class UserService {
     });
   }
 
+  verifyCost(paymentAmount: any , discount:any ): Observable<any>{
+    return this.http.post('http://localhost:8000/parcel/verify-cost',{
+      paymentAmount, discount
+
+    });
+
+  }
+
   saveParcelData(parcelData: any): Observable<any> {
     return this.http.post(
       'http://localhost:8000/parcel/save-parcel-data',

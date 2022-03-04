@@ -10,6 +10,8 @@ import { UserService } from 'src/app/service/user.service';
 export class ParcelComponent implements OnInit {
   paymentAmount: number = 0;
   discount: number = 0;
+  isBooked: boolean = false;
+  // finalAmount: number = 0;
 
   costReceived: boolean = false;
 
@@ -45,6 +47,7 @@ export class ParcelComponent implements OnInit {
     });
   }
 
+ 
   verifyCoupon() {
     let coupon = this.parcelForm.get('coupon')?.value;
     this.userService.verifyCoupon(coupon).subscribe((discount) => {
@@ -58,21 +61,32 @@ export class ParcelComponent implements OnInit {
     if (this.parcelForm.valid) {
       console.log(this.parcelForm.controls);
       this.userService
-        .saveParcelData({
-          type: this.parcelForm.get('type')?.value, // optional chaining
-          weight: this.parcelForm.get('weight')?.value,
-          length: this.parcelForm.get('length')?.value,
-          breadth: this.parcelForm.get('breadth')?.value,
-          pickupAddress: this.parcelForm.get('pickupAddress')?.value,
-          dropAddress: this.parcelForm.get('dropAddress')?.value,
-          additionalPhoneNumber: this.parcelForm.get('additionalPhoneNumber')
-            ?.value,
-          coupon: this.parcelForm.get('coupon')?.value,
-          discount: this.discount,
-          paymentAmount: this.paymentAmount,
-        })
-        .subscribe((data) => {
-          console.log(data);
+        .verifyCost(this.paymentAmount, this.discount)
+        .subscribe((isCostVerified) => {
+          console.log(isCostVerified);
+          if (isCostVerified) {
+            this.userService
+              .saveParcelData({
+                type: this.parcelForm.get('type')?.value, // optional chaining
+                weight: this.parcelForm.get('weight')?.value,
+                length: this.parcelForm.get('length')?.value,
+                breadth: this.parcelForm.get('breadth')?.value,
+                pickupAddress: this.parcelForm.get('pickupAddress')?.value,
+                dropAddress: this.parcelForm.get('dropAddress')?.value,
+                additionalPhoneNumber: this.parcelForm.get(
+                  'additionalPhoneNumber'
+                )?.value,
+                coupon: this.parcelForm.get('coupon')?.value,
+                discount: this.discount,
+                paymentAmount: this.paymentAmount,
+              })
+              .subscribe((data) => {
+                console.log(data);
+                alert('Cost Displayed Right');
+              });
+          } else {
+            alert('Cost Displayed Wrong');
+          }
         });
     } else {
       console.log(this.parcelForm.controls);

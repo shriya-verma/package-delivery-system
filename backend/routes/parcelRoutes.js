@@ -6,6 +6,7 @@ const parcelService = require("../services/parcelService");
 router.post("/cost-estimate", costEstimate);
 router.post("/verify-coupon", verifyCoupon);
 router.post("/save-parcel-data", saveParcelData);
+router.post("/verify-cost", verifyCost);
 
 function costEstimate(req, res) {
   parcelService
@@ -17,6 +18,13 @@ function costEstimate(req, res) {
 function verifyCoupon(req, res ) {
   parcelService
     .verifyCoupon(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => console.error(err));
+}
+
+function verifyCost(req, res) {
+  parcelService
+    .verifyCost(req.body)
     .then((data) => res.json(data))
     .catch((err) => console.error(err));
 }
