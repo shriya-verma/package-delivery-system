@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
+  isUserLoggedIn: boolean = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm.valueChanges.subscribe(console.log);
@@ -23,7 +24,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       this.userService.login(this.loginForm.value).subscribe((res) => {
-        console.log(res);
+        if(res){
+          console.log(res);
+          localStorage.setItem("userAccessToken","true");
+          this.router.navigateByUrl("/navbar"); 
+
+        }else{
+          console.log("Invalid email/password ");
+
+        }
+        
       });
     } else {
       console.error('Form is invalid');

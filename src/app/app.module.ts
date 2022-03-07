@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ParcelComponent } from './components/parcel/parcel.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,9 @@ import { ParcelComponent } from './components/parcel/parcel.component';
     LoginComponent,
     RegisterComponent,
     ParcelComponent,
+    NavbarComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

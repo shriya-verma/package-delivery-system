@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     otp: '',
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm.valueChanges.subscribe(console.log);
@@ -50,7 +50,17 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log(this.registerForm.controls);
       this.userService.register(this.registerForm.value).subscribe((res) => {
-        console.log(res);
+        if(res){
+          console.log(res);
+          localStorage.setItem("userAccessToken","true");
+          this.router.navigateByUrl("/navbar"); 
+
+        }else{
+          console.log("Invalid email/password ");
+
+        }
+
+        
       });
     } else {
       console.log(this.registerForm.controls);
