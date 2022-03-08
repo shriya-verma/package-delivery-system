@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-parcel',
@@ -82,10 +83,10 @@ export class ParcelComponent implements OnInit {
               })
               .subscribe((data) => {
                 console.log(data);
-                alert('Cost Displayed Right');
+                Swal.fire('Cost Displayed Right');
               });
           } else {
-            alert('Cost Displayed Wrong');
+            Swal.fire('Cost Displayed Wrong');
           }
         });
     } else {

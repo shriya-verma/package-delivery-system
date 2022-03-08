@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ParcelComponent } from './components/parcel/parcel.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     ParcelComponent,
     NavbarComponent,
     UserDetailsComponent,
+    NotFoundComponent,
+    HomeComponent,
     
     
   ],

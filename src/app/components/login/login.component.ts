@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
         if(res){
           console.log(res);
           localStorage.setItem("userAccessToken","true");
-          this.router.navigateByUrl("/navbar"); 
+          this.router.navigateByUrl("/home"); 
 
         }else{
           console.log("Invalid email/password ");
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
         
       });
     } else {
-      console.error('Form is invalid');
+      Swal.fire('Please fill in all the details!');
+      console.error('Form is invalid'); // 
     }
   }
 }

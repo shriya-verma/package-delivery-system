@@ -20,11 +20,13 @@ export class AuthenticationGuard implements CanActivate {
     let userToken = localStorage.getItem("userAccessToken") ? JSON.parse(localStorage.getItem("userAccessToken")!) : false;
     if(userToken){
       console.log("here in if")
+      this.IsLoggedIn = true;
       return true;
     }
     else {
       console.log("here in else")
-      this.router.navigateByUrl("login");
+      this.router.navigateByUrl("/login");
+      this.IsLoggedIn = false;
       return false;
     }
   }
