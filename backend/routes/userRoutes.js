@@ -6,6 +6,7 @@ const twilioService = require("../services/twilioService");
 // routes
 router.post("/authenticate", authenticate);
 router.post("/register", register);
+router.post("/save-user-details", saveUserDetails)
 
 function authenticate(req, res) {
   userService
@@ -19,6 +20,14 @@ function register(req, res) {
     .create(req.body)
     .then(() => res.json({ message: "Registration successful" }))
     .catch((err) => console.error(err));
+}
+
+function saveUserDetails(req, res){
+  userService
+    .saveUser(req.body)
+    .then(()=> res.json({message: "User details saved successfully"}))
+    .catch((err) => console.error(err));
+
 }
 
 // twilio

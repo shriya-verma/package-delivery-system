@@ -44,6 +44,15 @@ export class UserService {
     });
   }
 
+
+   // saves user details in db like name , country, city , state , zip etc
+  saveUserDetails(userData: any): Observable<any> {
+    return this.http.post(
+      'http://localhost:8000/users/save-user-details',
+      userData
+    );
+  }
+
   // cost estimation
   getCost(parcelData: any): Observable<any> {
     return this.http.post(

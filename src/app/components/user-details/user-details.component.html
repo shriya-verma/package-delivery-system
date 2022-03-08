@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="offset-3 col-6 border shadow-sm p-4">
+      <h3 class="mb-4">User Details</h3>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            formControlName="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            name="country"
+            formControlName="country"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="state" class="form-label">State</label>
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            formControlName="state"
+          />
+        </div>
+  
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            formControlName="city"
+          />
+        </div>
+        
+        <div class="mb-3">
+          <label for="zip" class="form-label">Zip Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zip"
+            name="zipCode"
+            pattern="[0-9]*"
+            formControlName="zip"
+          />
+        </div>
+
+  
+  
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+      </form>
+    </div>
+  </div>
+  

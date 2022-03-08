@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
         if(res){
           console.log(res);
           localStorage.setItem("userAccessToken","true");
-          this.router.navigateByUrl("/navbar"); 
+          this.router.navigateByUrl("/userDetails"); 
 
         }else{
           console.log("Invalid email/password ");

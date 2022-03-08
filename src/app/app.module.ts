@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ParcelComponent } from './components/parcel/parcel.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegisterComponent,
     ParcelComponent,
     NavbarComponent,
+    UserDetailsComponent,
     
     
   ],
